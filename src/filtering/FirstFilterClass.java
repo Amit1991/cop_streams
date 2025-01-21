@@ -2,9 +2,10 @@ package filtering;
 
 import model.Person;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.LongStream;
+
+import static model.Person.getPeople;
 
 public class FirstFilterClass {
 
@@ -23,23 +24,15 @@ public class FirstFilterClass {
         var list1 = List.of("Hello", "World", "Java", "Python", "C++", "C#");
         list1.stream().filter(str -> str.length() == 3).forEach(System.out::println);
 
-        List<Person> people = new ArrayList<>();
-        people.add(new Person("Amit", 34));
-        people.add(new Person("Bob", 25));
-        people.add(new Person("David", 20));
-        people.add(new Person("Dan", 24));
-        people.add(new Person("Dan", 25));
-        people.add(new Person("Claire", 31));
-
-        people.stream()
+        getPeople().stream()
                 .filter(person -> person.getAge() < 30)
                 .forEach(System.out::println);
         System.out.println();
-        people.stream()
+        getPeople().stream()
                 .filter(person -> person.getAge() < 30 && person.getAge() > 23)
                 .forEach(System.out::println);
         System.out.println();
-        people.stream()
+        getPeople().stream()
                 .filter(FirstFilterClass::firstFilterMethod)
                 .forEach(System.out::println);
         System.out.println();
